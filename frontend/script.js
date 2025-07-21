@@ -21,40 +21,63 @@ function createHeartbeatRow(brickCount = 60) {
     }
 }
 
-/* My Skill animation */
-function createSkillBricks() {
-    const rows = document.querySelectorAll('.bricks-row');
-
-    rows.forEach(row => {
-        const level = parseInt(row.dataset.level) || 0;
-        row.innerHTML = ''; // clear previous
-
-        for (let i = 0; i < level; i++) {
-            const brick = document.createElement('div');
-            brick.classList.add('lego-brick');
-            brick.style.setProperty('--lego-color', getSkillColor(i, level));
-            setTimeout(() => {
-                brick.classList.add('lego-brick--active');
-            }, i * 100); // stagger animation
-
-            row.appendChild(brick);
-        }
-    });
-}
-function getSkillColor(i, total) {
-    // Interpolate from red -> yellow -> green
-    const ratio = i / total;
-    if (ratio < 0.5) {
-        return `rgb(${255}, ${Math.floor(255 * ratio * 2)}, 0)`; // Red to yellow
-    } else {
-        return `rgb(${Math.floor(255 * (1 - ratio) * 2)}, 255, 0)`; // Yellow to green
-    }
-}
 
 document.addEventListener('DOMContentLoaded', () => {
     createHeartbeatRow();
     window.addEventListener('resize', createHeartbeatRow);
 
-    createSkillBricks();
-    window.addEventListener('resize', createSkillBricks);
+    /*Lego Skills hover Animation*/
+    const section = document.getElementById('my-skills-section');
+    const legoGridContainer = section.querySelector('.lego-grid-container');
+
+    const approximateBrickCellSize = 20; 
+    const numCols = Math.ceil(legoGridContainer.offsetWidth / approximateBrickCellSize);
+    const numRows = Math.ceil(legoGridContainer.offsetHeight / approximateBrickCellSize);
+    
+    const totalBricks = numRows * numCols;
+    const legoColors = ['#E4002B', '#FFCD00', '#00AF4D', '#0057A6', '#FFFFFF', '#000000',
+        '#FF6F00', '#8B4513', '#9932CC', '#00CED1']; // Lego-like colors
+
+    // Array to store references to all created bricks
+    const allBricks = []; 
+
+    // Function to create a single Lego brick element
+    function createLegoBrick(index) {
+        const brick = document.createElement('div');
+        brick.classList.add('lego-brick');
+        const randomColor = legoColors[Math.floor(Math.random() * legoColors.length)];
+        brick.style.setProperty('--lego-color', randomColor); // Set color using CSS variable
+        
+        // Add a slight random delay for a more natural "forming" effect
+        brick.style.transitionDelay = `${Math.random() * 0.4}s`; // Max 0.5s delay
+        
+        // You could also set initial random transforms here
+        // brick.style.transform = `scale(0.5) rotateX(${Math.random() * 180}deg) rotateY(${Math.random() * 180}deg) translateZ(${Math.random() * -200}px)`;
+
+        legoGridContainer.appendChild(brick);
+        allBricks.push(brick); // Store the brick reference
+    }
+
+    // Populate the grid with bricks
+    for (let i = 0; i < totalBricks; i++) {
+        createLegoBrick(i);
+    }
+
+    // Add event listeners for hover
+    section.addEventListener('mouseenter', () => {
+        allBricks.forEach((brick) => { // Removed 'index' if not needed here
+            brick.classList.add('lego-brick--active'); // ADD the active class
+            // The transitionDelay applied during creation will make them animate in staggered.
+        });
+    });
+
+    section.addEventListener('mouseleave', () => {
+        allBricks.forEach((brick) => { // Removed 'index' if not needed here
+            brick.classList.remove('lego-brick--active'); // REMOVE the active class
+            // The bricks will now animate back to their default (hidden) state
+            // respecting the transitionDelay set when they were created.
+        });
+    });
+
+    
 });
