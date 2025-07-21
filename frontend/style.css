@@ -93,7 +93,7 @@ h1, h2 {
 .hover-section {
     position: relative;
     width: 100%; /* Ensure it takes full width of its parent */
-    height: 300px; /* Fixed height for the animation area */
+    height: 100px; /* Fixed height for the animation area */
     background-color: #e0e0e0;
     margin: 50px auto;
     overflow: hidden; /* Crucial to hide bricks outside the section */
