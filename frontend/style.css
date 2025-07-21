@@ -44,64 +44,48 @@ h1, h2 {
 /* Lego Header Background */
 .header-lego-background {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
+    transform: translateY(-50%);
     width: 100%;
-    height: 100%;
-    display: grid;
-    /* Adjust grid density for header background */
-    grid-template-columns: repeat(auto-fill, minmax(25px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(25px, 1fr));
-    gap: 1px;
-    pointer-events: none; /* Allows clicks to pass through */
-    overflow: hidden;
-    z-index: 0; /* Ensures it's behind header text */
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .header-lego-brick {
-    width: 100%;
-    height: 100%;
-    background-color: var(--lego-color, #555); /* Default darker for background */
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.1); /* Subtle inner shadow */
-    position: relative;
+    width: 15px;
+    height: 15px;
+    background-color: #888;
     border-radius: 2px;
-
-    /* Animation properties */
-    animation: waveFlow 4s ease-in-out infinite alternate; /* Loop continuously */
+    opacity: 0;
+    animation: flatline 3s linear infinite;
 }
 
-/* Pseudo-element for the Lego stud on top of each header brick */
-.header-lego-brick::before {
-    content: '';
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    width: 60%;
-    height: 60%;
-    background-color: inherit;
-    border-radius: 50%;
-    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-    transform: translateZ(2px); /* Smaller stud depth */
-    border: 1px solid rgba(0, 0, 0, 0.05);
+/* Normal brick animation: fading in then out */
+@keyframes flatline {
+    0% { opacity: 0; }
+    5% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
-/* Keyframes for the wave animation */
-@keyframes waveFlow {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.7;
-    }
-    50% {
-        transform: translateY(-10px) scale(1.1); /* Move up slightly, scale up */
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(0) scale(1);
-        opacity: 0.7;
-    }
+/* Heartbeat animation */
+@keyframes pulse {
+    0%, 100% { height: 4px; opacity: 0; }
+    10%      { height: 4px; opacity: 1; }
+    13%      { height: 36px; }
+    25%      { height: 6px; }
+    37%      { height: 30px; }
+    50%      { height: 4px; }
+    100%     { height: 4px; opacity: 0; }
 }
 
+.heartbeat {
+    animation: pulse 3s linear infinite;
+}
 
 
 /* Lego hover section*/
