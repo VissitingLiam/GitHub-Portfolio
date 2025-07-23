@@ -1,116 +1,39 @@
-
-
-@font-face {
-	font-family: 'Decovar Draw'; 
-	src:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/DecovarDRAW-VF.ttf');
-}
-
-h1 {
-	margin: 0;
-	font-size: 30vw;
-	position: relative;
-	font-weight: 400;
-	letter-spacing: 1rem;
-	font-family: "Decovar Draw"; 
-	font-variation-settings: 'RSEC' 60.00;
-	animation: draw 4s infinite;
-	background: linear-gradient(to bottom, #a67d83 0%,#616cd3 20%,#84fafc 43%,#fdfbf3 60%,#f9f697 82%,#f4d186 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-
-h1::before {
-	content: attr(data-text);
-	width: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	z-index: -1;
-	text-shadow: -1px -1px 0  purple, 1px -1px 0  purple, -1px 1px 0  purple,
-		1px 1px 0  purple, 1px 0px 0px  purple, 0px 1px 0px  purple, 2px 1px 0px  purple,
-		1px 2px 0px  purple, 3px 2px 0px  purple, 2px 3px 0px  purple, 4px 3px 0px  purple,
-		3px 4px 0px  purple, 5px 4px 0px  purple, 3px 5px 0px  purple,
-		6px 5px 0px  purple, -1px 2px 0  purple, 0 3px 0  purple, 1px 4px 0  purple,
-		2px 5px 0px  purple, 2px -1px 0  purple, 3px 0 0  purple, 4px 1px 0  purple,
-		5px 2px 0px  purple, 6px 3px 0  purple, 7px 4px 0  purple,  7px 5px 0  purple;  	
-}
-
-span::before {
-	content: attr(data-text);
-	width: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	z-index: -3;
-	transform: translate(10px, 7.5px 5px);
-	text-shadow: -1px -1px 0  purple, 1px -1px 0  purple, -1px 1px 0  purple,
-		1px 1px 0  purple, 1px 0px 0px  purple, 0px 1px 0px  purple, 2px 1px 0px  purple,
-		1px 2px 0px  purple, 3px 2px 0px  purple, 2px 3px 0px  purple, 4px 3px 0px  purple,
-		3px 4px 0px  purple, 5px 4px 0px  purple, 3px 5px 0px  purple,
-		6px 5px 0px  purple, -1px 2px 0  purple, 0 3px 0  purple, 1px 4px 0  purple,
-		2px 5px 0px  purple, 2px -1px 0  purple, 3px 0 0  purple, 4px 1px 0  purple,
-		5px 2px 0px  purple, 6px 3px 0  purple, 7px 4px 0  purple,  7px 5px 0  purple;  	
-}
-
-h1::after {
-	content: attr(data-text);
-	width: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	transform: translate(10px, 7.5px, 5px);
-	z-index: -2;
-	background: linear-gradient(to bottom, #a67d83 0%,#616cd3 20%,#84fafc 43%,#fdfbf3 60%,#f9f697 82%,#f4d186 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	animation: draw 4.1s infinite;
-
-		
-}
-
-@keyframes draw {
-	0% {font-variation-settings: 'DRAW' 1000;}
-	10% {font-variation-settings: 'DRAW' 800;}
-	20% {font-variation-settings: 'DRAW' 600;}
-	30% {font-variation-settings: 'DRAW' 400;}
-	40% {font-variation-settings: 'DRAW' 200;}
-	50% {font-variation-settings: 'DRAW' 0;}
-	60% {font-variation-settings: 'DRAW' 200;}
-	70% {font-variation-settings: 'DRAW' 400;}
-	80% {font-variation-settings: 'DRAW' 600;}
-	90% {font-variation-settings: 'DRAW' 800;}
-    100% {font-variation-settings: 'DRAW' 1000;}		
-}
-
-/* Positioning - This is general CSS positioning to center the text in the page. It's not required for the text effect you can modify these however you like.*/
-html {
-	height: 100%;
-}
-
 body {
-	background: radial-gradient(ellipse at center, #1d2b38 64%,#1f2e3a 100%);
-	height: 100%;
+  margin: 0;
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-div {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.lego-container {
+  display: grid;
+  grid-template-columns: repeat(80, 10px);
+  grid-template-rows: repeat(20, 10px);
+  gap: 1px;
+  position: relative;
 }
 
-h1 {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	align-content: center;
-	text-align: center;
-	
-	&:after, &:before {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
-	}
+.brick {
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.brick.animate {
+  animation: dropIn 0.3s forwards;
+}
+
+@keyframes dropIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }

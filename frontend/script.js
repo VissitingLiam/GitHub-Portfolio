@@ -81,3 +81,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 });
+
+
+/*My Skill animation*/
+// Brick colors and types
+const legoColors = ["#e3000b", "#ffcc00", "#009de0", "#43b02a", "#f57f17"];
+const container = document.getElementById("legoContainer");
+
+// Each letter is represented using a grid and relative coordinates
+// Bricks are made of 1x1, 1x2 or 1x3 based on shape
+// Here’s a sample “M” shape using 1x1 bricks
+const letterMaps = {
+  "M": [
+    [0,0],[1,0],    [3,0],[4,0],
+    [0,1],      [2,1],    [4,1],
+    [0,2],                [4,2],
+    [0,3],                [4,3],
+    [0,4],                [4,4]
+  ],
+  "Y": [
+    [0,0],      [4,0],
+             [2,1],
+           [2,2],
+           [2,3],
+           [2,4]
+  ],
+  "S": [
+        [1,0],[2,0],[3,0],
+        [1,1],
+        [1,2],[2,2],[3,2],
+                  [3,3],
+        [1,4],[2,4],[3,4]
+  ],
+  "K": [
+    [0,0],      [2,0],
+    [0,1],    [2,1],
+    [0,2],  [1,2],
+    [0,3],    [2,3],
+    [0,4],      [2,4]
+  ],
+  "I": [
+    [0,0],[1,0],[2,0],
+          [1,1],
+          [1,2],
+          [1,3],
+    [0,4],[1,4],[2,4]
+  ],
+  "L": [
+    [0,0],
+    [0,1],
+    [0,2],
+    [0,3],
+    [0,4],[1,4],[2,4]
+  ]
+};
+
+// Convert text into drawing instructions
+const textToDraw = "MY SKILLS";
+let offsetX = 2;
+let offsetY = 2;
+let brickSize = 10;
+let delay = 0;
+
+function drawLetter(letter, baseX, baseY) {
+  const bricks = letterMaps[letter];
+  if (!bricks) return;
+
+  bricks.forEach(([x, y], i) => {
+    const brick = document.createElement("div");
+    brick.className = "brick";
+    brick.style.gridColumnStart = baseX + x;
+    brick.style.gridRowStart = baseY + y;
+    brick.style.backgroundColor = legoColors[Math.floor(Math.random() * legoColors.length)];
+
+    container.appendChild(brick);
+
+    setTimeout(() => {
+      brick.classList.add("animate");
+    }, delay);
+    delay += 50;
+  });
+}
+
+function drawPhrase() {
+  const letters = textToDraw.split("");
+
+  letters.forEach(letter => {
+    if (letter === " ") {
+      offsetX += 6;
+    } else {
+      drawLetter(letter, offsetX, offsetY);
+      offsetX += 6;
+    }
+  });
+}
+
+drawPhrase();
+
+
