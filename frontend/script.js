@@ -140,7 +140,7 @@ const letterMaps = {
 const textToDraw = "MY SKILLS";
 let offsetX = 2;
 let offsetY = 2;
-let brickSize = 10;
+let brickSize = 20;
 let delay = 0;
 
 function drawLetter(letter, baseX, baseY) {
@@ -149,7 +149,7 @@ function drawLetter(letter, baseX, baseY) {
 
   bricks.forEach(([x, y], i) => {
     const brick = document.createElement("div");
-    brick.className = "brick";
+    brick.className = "lego-brick";
     brick.style.gridColumnStart = baseX + x;
     brick.style.gridRowStart = baseY + y;
     brick.style.backgroundColor = legoColors[Math.floor(Math.random() * legoColors.length)];
@@ -179,3 +179,13 @@ function drawPhrase() {
 drawPhrase();
 
 
+/*puszzel*/
+document.querySelectorAll('.puzzle-piece').forEach((piece, i) => {
+  piece.style.opacity = 0;
+  piece.style.transform = 'scale(0.8)';
+  setTimeout(() => {
+    piece.style.transition = 'all 0.5s ease';
+    piece.style.opacity = 1;
+    piece.style.transform = 'scale(1)';
+  }, i * 100);
+});

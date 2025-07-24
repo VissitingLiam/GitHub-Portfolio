@@ -16,15 +16,40 @@ body {
   position: relative;
 }
 
-.brick {
-  width: 100%;
-  height: 100%;
-  border-radius: 2px;
-  opacity: 0;
-  transform: scale(0.8);
+/* Styles for individual Lego bricks */
+.lego-brick {
+    width: 100%; /* Fill grid cell */
+    height: 100%; /* Fill grid cell */
+    background-color: var(--lego-color, #007bff); /* Default blue, overridden by JS */
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    
+    transform-style: preserve-3d; /* For the stud effect */
+    position: relative;
+    border-radius: 3px; /* Slightly rounded corners for brick */
+
+    /* Initial state: hidden, scaled down, rotated, and translated off-screen */
+    opacity: 0;
+    transform: scale(0.1) rotateX(180deg) rotateY(180deg) translateZ(-200px); 
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease-out; /* Smooth animation */
 }
 
-.brick.animate {
+/* Pseudo-element for the Lego stud on top of each brick */
+.lego-brick::before {
+    content: '';
+    position: absolute;
+    top: 20%; /* Position the stud */
+    left: 20%; /* Position the stud */
+    width: 60%; /* Size of the stud */
+    height: 60%; /* Size of the stud */
+    background-color: inherit; /* Inherit the brick's color */
+    border-radius: 50%; /* Make it round */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); /* Inner shadow for depth */
+    transform: translateZ(5px); /* Push the stud forward in 3D space */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.lego-brick.animate {
   animation: dropIn 0.3s forwards;
 }
 
