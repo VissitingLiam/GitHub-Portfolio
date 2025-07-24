@@ -35,8 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const numRows = Math.ceil(legoGridContainer.offsetHeight / approximateBrickCellSize);
     
     const totalBricks = numRows * numCols;
-    const legoColors = ['#E4002B', '#FFCD00', '#00AF4D', '#0057A6', '#FFFFFF', '#000000',
-        '#FF6F00', '#8B4513', '#9932CC', '#00CED1']; // Lego-like colors
+    
 
     // Array to store references to all created bricks
     const allBricks = []; 
@@ -85,7 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /*My Skill animation*/
 // Brick colors and types
-const legoColors = ["#e3000b", "#ffcc00", "#009de0", "#43b02a", "#f57f17"];
+const legoColors = ['#E4002B', '#FFCD00', '#00AF4D', '#0057A6', '#FFFFFF', '#000000',
+        '#FF6F00', '#8B4513', '#9932CC', '#00CED1']; // Lego-like colors
 const container = document.getElementById("legoContainer");
 
 // Each letter is represented using a grid and relative coordinates
@@ -100,11 +100,11 @@ const letterMaps = {
     [0,4],                [4,4]
   ],
   "Y": [
-    [0,0],      [4,0],
-             [2,1],
-           [2,2],
-           [2,3],
-           [2,4]
+    [0,0],            [4,0],
+        [1,1],  [3,1],
+            [2,2],
+            [2,3],
+            [2,4]
   ],
   "S": [
         [1,0],[2,0],[3,0],

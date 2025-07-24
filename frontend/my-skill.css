@@ -9,8 +9,9 @@ body {
 
 .lego-container {
   display: grid;
-  grid-template-columns: repeat(80, 10px);
-  grid-template-rows: repeat(20, 10px);
+  grid-template-columns: repeat(60, 10px);
+  grid-template-rows: repeat(10, 10px);
+  justify-content: center;
   gap: 1px;
   position: relative;
 }
