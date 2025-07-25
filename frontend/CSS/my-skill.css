@@ -192,3 +192,11 @@ body {
 .green-card {
   background: linear-gradient(145deg, #00af4d, #00d86a);
 }
+
+.red-card{
+  background: linear-gradient(145deg, #ff0000, #ff4242 );
+}
+
+.yellow-card{
+  background: linear-gradient(145deg, #fffb00, #fffc2e);
+}
