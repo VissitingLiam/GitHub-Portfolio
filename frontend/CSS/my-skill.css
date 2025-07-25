@@ -1,11 +1,36 @@
 body {
+  background: #111;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  background-color: #111;
+  padding: 2rem;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start;
 }
+
+/*screen adjustment*/
+@media (max-width: 600px) {
+  .lego-card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .lego-skill-container {
+    justify-content: center;
+  }
+}
+
+
+.lego-skill-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1400px;
+}
+
 
 .lego-container {
   display: grid;
@@ -62,4 +87,108 @@ body {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
+}
+
+
+
+
+.lego-card {
+  position: relative;
+  background: linear-gradient(145deg, #ff6f00, #ff9f00);
+  width: 280px;
+  height: 350px;
+  border-radius: 15px;
+  box-shadow:
+    0 5px 15px rgba(0,0,0,0.4),
+    inset 0 -5px 15px rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.lego-card:hover {
+  transform: translateY(-20px) rotateX(5deg) rotateY(10deg);
+  box-shadow:
+    0 15px 30px rgba(0,0,0,0.6),
+    inset 0 -8px 25px rgba(255, 255, 255, 0.35);
+}
+
+/* Lego studs pattern */
+.lego-card::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: 50px;
+  background: repeating-radial-gradient(circle at center,
+    #ffb300 0 6px,
+    #ffa000 6px 12px,
+    transparent 12px 15px);
+  background-size: 30px 30px;
+  border-radius: 10px;
+  box-shadow: inset 0 3px 5px rgba(255,255,255,0.6);
+  pointer-events: none;
+  transform-style: preserve-3d;
+  z-index: 10;
+  transition: background-size 0.4s ease;
+}
+
+.lego-card:hover::before {
+  background-size: 40px 40px;
+}
+
+/* Card content */
+.lego-card-content {
+  position: relative;
+  z-index: 20;
+  padding: 1.5rem;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0,0,0,0.7);
+}
+
+.lego-card-content h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.lego-card-content p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Add subtle stud shadow on card bottom */
+.lego-card::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: 50px;
+  background: repeating-radial-gradient(circle at center,
+    #ffb300 0 6px,
+    #ffa000 6px 12px,
+    transparent 12px 15px);
+  background-size: 30px 30px;
+  border-radius: 10px;
+  opacity: 0.6;
+  filter: blur(4px);
+  pointer-events: none;
+  transform-style: preserve-3d;
+  z-index: 5;
+  transition: background-size 0.4s ease;
+}
+
+.lego-card:hover::after {
+  background-size: 40px 40px;
+}
+
+/* Different colored cards */
+.blue-card {
+  background: linear-gradient(145deg, #0057a6, #0088ff);
+}
+
+.green-card {
+  background: linear-gradient(145deg, #00af4d, #00d86a);
 }

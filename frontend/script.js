@@ -1,3 +1,7 @@
+// Brick colors and types
+const legoColors = ['#E4002B', '#FFCD00', '#00AF4D', '#0057A6',
+        '#FF6F00', '#8B4513', '#9932CC', '#00CED1']; // Lego-like colors
+
 function createHeartbeatRow(brickCount = 60) {
     const container = document.querySelector('.header-lego-background');
     container.innerHTML = '';
@@ -20,7 +24,6 @@ function createHeartbeatRow(brickCount = 60) {
         container.appendChild(brick);
     }
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
     createHeartbeatRow();
@@ -83,9 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /*My Skill animation*/
-// Brick colors and types
-const legoColors = ['#E4002B', '#FFCD00', '#00AF4D', '#0057A6', '#FFFFFF', '#000000',
-        '#FF6F00', '#8B4513', '#9932CC', '#00CED1']; // Lego-like colors
+
 const container = document.getElementById("legoContainer");
 
 // Each letter is represented using a grid and relative coordinates
@@ -188,4 +189,58 @@ document.querySelectorAll('.puzzle-piece').forEach((piece, i) => {
     piece.style.opacity = 1;
     piece.style.transform = 'scale(1)';
   }, i * 100);
+});
+
+
+
+/*Education tree */
+const leaves = document.querySelectorAll('.leaf');
+const popup = document.getElementById('leaf-popup');
+const popupTitle = document.getElementById('popup-title');
+const popupInfo = document.getElementById('popup-info');
+
+leaves.forEach(leaf => {
+  leaf.addEventListener('click', () => {
+    popupTitle.textContent = leaf.dataset.title;
+    popupInfo.textContent = leaf.dataset.info;
+    popup.style.display = 'block';
+  });
+});
+
+
+/*Day and night mode*/
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById('toggle-night-mode');
+
+  // Function to apply or remove night mode classes
+  function setNightMode(enabled) {
+    if (enabled) {
+      document.body.classList.add('night-mode');
+      document.querySelector('header').classList.add('night-mode');
+      document.querySelectorAll('section').forEach(sec => sec.classList.add('night-mode'));
+      toggleBtn.textContent = '☀️'; // Sun icon to indicate can toggle off
+    } else {
+      document.body.classList.remove('night-mode');
+      document.querySelector('header').classList.remove('night-mode');
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('night-mode'));
+      toggleBtn.textContent = '🌙'; // Moon icon to indicate can toggle on
+    }
+  }
+
+  // Load saved preference from localStorage
+  const nightModePref = localStorage.getItem('nightMode') === 'true';
+  setNightMode(nightModePref);
+
+  // Toggle on button click
+  toggleBtn.addEventListener('click', () => {
+    const isNight = document.body.classList.toggle('night-mode');
+    document.querySelector('header').classList.toggle('night-mode');
+    document.querySelectorAll('section').forEach(sec => sec.classList.toggle('night-mode'));
+
+    // Update button icon
+    toggleBtn.textContent = isNight ? '☀️' : '🌙';
+
+    // Save preference
+    localStorage.setItem('nightMode', isNight);
+  });
 });

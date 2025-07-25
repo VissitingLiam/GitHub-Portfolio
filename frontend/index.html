@@ -1,102 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liam Craven - Virtual CV</title>
-    <link rel="stylesheet" href="CSS/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liam Craven - Virtual CV</title>
+  <link rel="stylesheet" href="CSS/style.css" />
 </head>
 <body>
 
 <header class="header">
-    <div class="header-lego-background"></div>
-    <div class="header-content">
-        <h1>Liam Craven</h1>
-        <p>A person building his world lesson by lesson</p>
-    </div>
+  <div class="header-lego-background"></div>
+  <div class="header-content">
+    <h1>Liam Craven</h1>
+    <p>A person building his world, lesson by lesson.</p>
+    <button id="toggle-night-mode" aria-label="Toggle Night Mode" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+  🌙
+</button>
+
+  </div>
 </header>
+
+<!-- Sticky Navigation Bar -->
+<nav class="sticky-nav">
+  <a href="#about" class="nav-icon" title="About Me">👤</a>
+  <a href="#education" class="nav-icon" title="Education">🌳</a>
+  <a href="#experience" class="nav-icon" title="Experience">🧩</a>
+  <a href="#my-skills-section" class="nav-icon" title="My Skills">🧱</a>
+  <a href="#portfolio" class="nav-icon" title="Portfolio">📁</a>
+  <a href="#contact" class="nav-icon" title="Contact">📬</a>
+</nav>
 
 <!-- MAIN PAGE BLUEPRINT SECTION -->
 <section id="main-map" class="hover-section">
-    <div>
-        <h2>Navigation Bar</h2>
+  <div>
+    <h2>Navigation Bar</h2>
     <p>Explore the blueprint of my professional journey.</p>
-    <div class="map-icons">
-        <a href="#about" class="map-icon">👤</a>
-        <a href="#education" class="map-icon">🌳</a>
-        <a href="#experience" class="map-icon">🧩</a>
-        <a href="#my-skills-section" class="map-icon">🧱</a>
-        <a href="#portfolio" class="map-icon">📁</a>
-        <a href="#contact" class="map-icon">📬</a>
-    </div></div>
+  </div>
 </section>
 
 <!-- ABOUT ME LEGO BOX PROFILE -->
 <section id="about">
-    <h2>About Me</h2>
-    <div class="lego-profile">
-        <p>Hello! I'm Liam, a person who always feels like some who leans something new. From learing a new coding laguage to learing how to be part of a orginization.
-            One of the things that i reacently learned how to do is Web Development, it is/was giving unique challenges that gave me a new perspective on how other people tend to do it. </p>
-    </div>
+  <h2>About Me</h2>
+  <div class="lego-profile">
+    <p>
+      Hello! I'm Liam, a person who always feels like learning something new. From learning a new coding language to learning how to be part of an organization. One of the things I recently learned to do is Web Development. It gave me unique challenges and a fresh perspective on how others approach it.
+    </p>
+  </div>
 </section>
 
 <!-- EXPERIENCE JIGSAW PUZZLE LINK -->
 <section id="experience">
-    <h3><!--<a href="experience.html">Experience</a> -->Experience</h3>
-    <p>In terms of experience, I have accumulated alot through out my time in university.</p>
-    <p>I have acquaered basick knowlage of coding in languages like Phython, Java, C++, C# and Kotlin.</p>
-    <p>I have been and seen how orginizations operate and orginize agendas at meetings.</p>
-    <p>Learning more about data base systems and unique languages, softwares that can be used to comunicate like AWS, SQL, MongoDB and so on.</p>
-    <p>I also gathered experience in a leader ship position where i had to direct a large group op people 
-        in onder to construct that had be made with in a set amount of time and a restricted budget.</p>
-    <p>I also gained experience in Cyber security, where i was apart a group of people who were prepairing to partake in SANREN,
-        where I leaned many difrent methods to of how to hack some one of to look out for hackers.</p>
-    <p>I have gained the experience in how to help and explain IT concepts to others from theorie to coding,
-         taking concepts and explaining it to some so that it makes sence to them .</p>
-
-    </section>
+  <h3>Experience</h3>
+  <p>Throughout my university years, I have accumulated a lot of valuable experience.</p>
+  <p>I have acquired basic knowledge of coding in languages like Python, Java, C++, C#, and Kotlin.</p>
+  <p>I have observed how organizations operate and organize agendas at meetings.</p>
+  <p>I have learned about database systems and unique software used for communication, such as AWS, SQL, MongoDB, and others.</p>
+  <p>I gained leadership experience by directing a large group of people to construct projects within set deadlines and restricted budgets.</p>
+  <p>I was part of a cybersecurity team preparing to partake in SANREN, learning various methods to protect systems and look out for hackers.</p>
+  <p>I have experience helping and explaining IT concepts to others—from theory to coding—making complex topics easier to understand.</p>
+</section>
 
 <!-- EDUCATION NATURE TREE LINK -->
 <section id="education">
-    
-    <h4><!--<a href="education.html">Education</a>-->Education</h4>
-    <object data="education.svg" type="image/svg+xml"></object>
-    <p>Interm of education I recieved what some one would expect.</p>
-    <p>Doing my Bachelor of Sience, Information Technology at the NWU.</p>
+  <h4>Education</h4>
+  <object data="education.svg" type="image/svg+xml" aria-label="Education tree graphic"></object>
+  <p>In terms of education, I pursued what one would expect.</p>
+  <p>I am currently doing my Bachelor of Science in Information Technology at NWU.</p>
 </section>
 
 <!-- LEGO SKILLS ANIMATION -->
-<section2 id="my-skills-section" class="hover-section">
-    <a href="My-Skill.html" >
-        <div id="lego-center">
-            <div class="lego-container" id="legoContainer"></div>
-        </div>
-        <div class="lego-grid-container"></div>
-    </a>
-</section2>
+<section id="my-skills-section" class="hover-section">
+  <a href="My-Skill.html">
+  <div id="lego-center">
+    <div class="lego-container" id="legoContainer"></div>
+  </div>
+  <div class="lego-grid-container"></div>
+  </a>
+</section>
 
 <!-- PORTFOLIO -->
 <section id="portfolio">
-    <h5>Portfolio / Projects</h5>
-    <p>Discover the creations I've built using my skills.</p>
-    <p>Me and a group of people making a movie cinema sytem to get an under standing of how it will work in the indistry(C# and SQL).</p>
-    <p>Making chat app that allowed us to get an understanding of how the networksystem worked(C#).</p>
-    <p>Made a Sceleton(Basick) Andriod app that tracked the screen time of some apps in an way to prens over use of some apps by allowing the user
-         to do educational minigames to ceep the mind active and fresh.(main language Kotlin)</p>
-    <p>Made a 1player battle ship game, where the user chose the map to play on and the user had to sink all the battle ships(C++).</p>
-
+  <h5>Portfolio / Projects</h5>
+  <p>Discover the creations I've built using my skills.</p>
+  <p>I worked with a group building a movie cinema system to understand industry workflows (C# and SQL).</p>
+  <p>Developed a chat app to understand network systems (C#).</p>
+  <p>Created a basic Android app to track app screen time and encourage educational mini-games to prevent overuse (Kotlin).</p>
+  <p>Built a 1-player Battleship game with map choices, requiring the user to sink all ships (C++).</p>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-    <h6>Contact</h6>
-    <p>Email: <a href="mailto:cravenliam04@gmail.com">cravenliam04@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/liam-craven-b1a03926b" target="_blank">Liam Craven</a></p>
+  <h6>Contact</h6>
+  <p>Email: <a href="mailto:cravenliam04@gmail.com">cravenliam04@gmail.com</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/liam-craven-b1a03926b" target="_blank" rel="noopener noreferrer">Liam Craven</a></p>
 </section>
 
 <!-- FOOTER -->
 <footer>
-    <p>&copy; 2025 Liam Craven. All rights reserved.</p>
+  <p>&copy; 2025 Liam Craven. All rights reserved.</p>
 </footer>
 
 <script src="script.js"></script>

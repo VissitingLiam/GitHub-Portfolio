@@ -1,61 +1,41 @@
-
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-    color: #333;
+  background: linear-gradient(-45deg, #1e3c72, #2a5298, #1e3c72, #2a5298);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  
 }
 
-header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
 
-    position: relative; /* Needed for absolute positioning of the background */
-    overflow: hidden; /* Hide parts of Legos that go outside */
-    min-height: 150px; /* Ensure header has enough height for background */
-    display: flex; /* Use flexbox to center content */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1; /* Ensure header content is above background */
+/* Header */
+header {
+  background: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
 
 header h1, header p {
-    position: relative;
-    z-index: 2; 
-    color: #fff; 
-    text-shadow: 0 0 5px rgba(0,0,0,0.5); 
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
-section {
-    padding: 20px;
-    margin: 0 20px;
-    background: #fff;
-    border-bottom: 1px solid #ddd;
-}
-
-h1, h2, h3, h4, h5, h6, h7 {
-    color: #007bff;
-}
-
-/* Lego Header Background */
-.header-lego-background {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    z-index: 0;
-    pointer-events: none;
-}
-
+/*Heart beat animation*/
 .header-lego-brick {
     width: 15px;
     height: 15px;
@@ -65,7 +45,6 @@ h1, h2, h3, h4, h5, h6, h7 {
     animation: flatline 3s linear infinite;
 }
 
-/* Normal brick animation: fading in then out */
 @keyframes flatline {
     0% { opacity: 0; }
     5% { opacity: 1; }
@@ -73,15 +52,14 @@ h1, h2, h3, h4, h5, h6, h7 {
     100% { opacity: 0; }
 }
 
-/* Heartbeat animation */
 @keyframes pulse {
     0%, 100% { height: 4px; opacity: 0; }
     10%      { height: 4px; opacity: 1; }
     13%      { height: 36px; }
     25%      { height: 6px; }
     37%      { height: 30px; }
-    50%      { height: 4px; }
-    100%     { height: 4px; opacity: 0; }
+    50%      { height: 4px; opacity: 0; }
+    
 }
 
 .heartbeat {
@@ -89,123 +67,157 @@ h1, h2, h3, h4, h5, h6, h7 {
 }
 
 
-/* Lego hover section*/
-/* Styles for the hover section and Lego grid*/
+/* Sticky Navigation Bar */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  background: #222;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.sticky-nav a.nav-icon {
+  font-size: 1.8rem;
+  margin: 0 12px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sticky-nav a.nav-icon:hover,
+.sticky-nav a.nav-icon:focus {
+  color: #ff5722;
+  outline: none;
+}
+
+/* Sections */
+section, section#my-skills-section {
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+/* Headings color */
+h1, h2, h3, h4, h5, h6 {
+  color: #007bff;
+  margin-bottom: 0.5em;
+}
+
+/* Lego Header Background */
+.header-lego-background {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+/* Lego hover section */
 .hover-section {
-    position: relative;
-    width: 100%; /* Ensure it takes full width of its parent */
-    height: 100px; /* Fixed height for the animation area */
-    background-color: #e0e0e0;
-    margin: 50px auto;
-    overflow: hidden; /* Crucial to hide bricks outside the section */
-    perspective: 1000px; /* Establishes 3D space for children */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 0.5rem; /* Tailwind's rounded-lg */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Tailwind's shadow-xl */
-    transition: all 0.3s ease-in-out; /* Smooth transition for section itself */
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background-color: #e0e0e0;
+  margin: 50px auto;
+  overflow: hidden;
+  perspective: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  transition: all 0.3s ease-in-out;
 }
 
-/* Styles for the container that holds the dynamically created Lego bricks */
+/* Lego bricks grid */
 .lego-grid-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    /* Adjust grid density here. Each 'fr' unit takes equal space. */
-    /* Example: 20px min size, then fill space */
-    grid-template-columns: repeat(auto-fill, minmax(18px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(18px, 1fr));
-    gap: 2px; /* Small gap between bricks */
-    pointer-events: none; /* VERY IMPORTANT: Allows mouse events to pass through to .hover-section */
-    transform-style: preserve-3d; /* Children inherit 3D context */
-    overflow: hidden; /* Just in case, though parent has it */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(18px, 1fr));
+  gap: 2px;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  overflow: hidden;
 }
 
-/* Styles for individual Lego bricks */
+/* Individual Lego bricks */
 .lego-brick {
-    width: 100%; /* Fill grid cell */
-    height: 100%; /* Fill grid cell */
-    background-color: var(--lego-color, #007bff); /* Default blue, overridden by JS */
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    
-    transform-style: preserve-3d; /* For the stud effect */
-    position: relative;
-    border-radius: 3px; /* Slightly rounded corners for brick */
-
-    /* Initial state: hidden, scaled down, rotated, and translated off-screen */
-    opacity: 0;
-    transform: scale(0.1) rotateX(180deg) rotateY(180deg) translateZ(-200px); 
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease-out; /* Smooth animation */
+  width: 100%;
+  height: 100%;
+  background-color: var(--lego-color, #007bff);
+  border: 1px solid rgba(0,0,0,0.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  transform-style: preserve-3d;
+  position: relative;
+  border-radius: 3px;
+  opacity: 0;
+  transform: scale(0.1) rotateX(180deg) rotateY(180deg) translateZ(-200px);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease-out;
 }
 
-/* Pseudo-element for the Lego stud on top of each brick */
 .lego-brick::before {
-    content: '';
-    position: absolute;
-    top: 20%; /* Position the stud */
-    left: 20%; 
-    width: 60%; 
-    height: 60%; 
-    background-color: inherit; /* Inherit the brick's color */
-    border-radius: 50%; /* Make it round */
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); /* Inner shadow for depth */
-    transform: translateZ(5px); /* Push the stud forward in 3D space */
-    border: 1px solid rgba(0, 0, 0, 0.1);
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  background-color: inherit;
+  border-radius: 50%;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  transform: translateZ(5px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* Hover state for the bricks - triggered when the parent .hover-section is hovered */
 .lego-brick--active {
-    opacity: 1; /* Make visible */
-    transform: scale(1) rotateX(0deg) rotateY(0deg) translateZ(0); /* Animate to final position */
+  opacity: 1;
+  transform: scale(1) rotateX(0deg) rotateY(0deg) translateZ(0);
 }
 
-/* Optional: Style the text on hover */
-.hover-section:hover h5 {
-    color: rgb(151, 15, 15); /* Change text color */
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Add glow */
-}
-
-
-/* My skill drawnnimation */
-section2 {
-  margin: 0;
+/* My skills section layout */
+#my-skills-section {
   background-color: #111;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 300px; /* smaller height */
+  max-width: 900px; /* optional, for better horizontal control */
+  margin: 20px auto; /* center horizontally with margin */
 }
-.lego-center{
-    position: relative;
 
+.lego-center {
+  position: relative;
 }
 
 .lego-container {
   display: grid;
-  top: 0;
-  left: 0;
   grid-template-columns: repeat(60, 10px);
-  grid-template-rows: repeat(10,10px);
+  grid-template-rows: repeat(10, 10px);
   margin: 0;
   justify-content: center;
   gap: 1px;
-  position: relative ;
+  position: relative;
 }
-/*
-.brick {
-  width: 100%;
-  height: 100%;
-  border-radius: 2px;
-  opacity: 0;
-  transform: scale(0.8);
-}
-*/
+
 .lego-brick.animate {
   animation: dropIn 0.3s forwards;
 }
@@ -221,46 +233,26 @@ section2 {
   }
 }
 
-
-/*new index additions*/
-.gameboard {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 20px;
-}
-.menu-brick {
-  background: #ffcd00;
-  padding: 12px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
+/*Day and night mode*/
+/* Default (light) mode */
+body {
+  background-color: #f4f4f4;
   color: #333;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
-.lego-box-card {
-  background: #fefefe;
-  border: 2px dashed #ccc;
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 20px;
+
+/* Night mode styles */
+body.night-mode {
+  background-color: #121212;
+  color: #eee;
 }
-.tree-canvas {
-  background: #e6ffe6;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
+
+header.night-mode {
+  background-color: #222;
+  color: #eee;
 }
-.leaf {
-  cursor: pointer;
-  font-size: 2rem;
-  display: inline-block;
-  margin: 10px;
-}
-.puzzle-container {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
+
+/* Adjust other elements as needed */
+section.night-mode {
+  background-color: #1e1e1e;
+  color: #ccc;
 }
