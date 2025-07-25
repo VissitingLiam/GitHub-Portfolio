@@ -64,9 +64,9 @@ body {
     content: '';
     position: absolute;
     top: 20%; /* Position the stud */
-    left: 20%; /* Position the stud */
-    width: 60%; /* Size of the stud */
-    height: 60%; /* Size of the stud */
+    left: 20%; 
+    width: 60%; 
+    height: 60%; 
     background-color: inherit; /* Inherit the brick's color */
     border-radius: 50%; /* Make it round */
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); /* Inner shadow for depth */

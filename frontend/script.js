@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const section = document.getElementById('my-skills-section');
     const legoGridContainer = section.querySelector('.lego-grid-container');
 
-    const approximateBrickCellSize = 20; 
+    const approximateBrickCellSize = 30; 
     const numCols = Math.ceil(legoGridContainer.offsetWidth / approximateBrickCellSize);
     const numRows = Math.ceil(legoGridContainer.offsetHeight / approximateBrickCellSize);
     
@@ -52,10 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Add a slight random delay for a more natural "forming" effect
         brick.style.transitionDelay = `${Math.random() * 0.4}s`; // Max 0.5s delay
-        
-        // You could also set initial random transforms here
-        // brick.style.transform = `scale(0.5) rotateX(${Math.random() * 180}deg) rotateY(${Math.random() * 180}deg) translateZ(${Math.random() * -200}px)`;
-
         legoGridContainer.appendChild(brick);
         allBricks.push(brick); // Store the brick reference
     }
@@ -176,7 +172,6 @@ function drawPhrase() {
     }
   });
 }
-
 drawPhrase();
 
 
