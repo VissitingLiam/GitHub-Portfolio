@@ -1,12 +1,21 @@
 body {
-  background: #111;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 2rem;
-  min-height: 100vh;
+    background: #111;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Use 'center' here to center children (header/section) horizontally */
+    flex-direction: column; /* Stack children vertically */
+}
+.skill-header{
+  width: 100%;
+  position: relative;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  padding: 20px 0;
 }
 
 /*screen adjustment*/
@@ -33,12 +42,14 @@ body {
 
 
 .lego-container {
-  display: grid;
-  grid-template-columns: repeat(60, 10px);
-  grid-template-rows: repeat(10, 10px);
-  justify-content: center;
-  gap: 1px;
-  position: relative;
+    display: grid;
+    /* This defines a fixed, wide width: 60 columns * 10px + 59 gaps * 1px = 659px */
+    grid-template-columns: repeat(60, 10px); 
+    grid-template-rows: repeat(10, 10px);
+    gap: 1px;
+    position: relative;
+    /* Optional: Add margin auto for extra assurance */
+    margin: 0 auto; 
 }
 
 /* Styles for individual Lego bricks */
@@ -91,7 +102,14 @@ body {
 
 
 
-
+.lego-card-grid {
+    width: 100%; /* Take full width */
+    /* This section is automatically placed below the header due to flex-direction: column on the body */
+    display: flex; /* Helps in centering the container inside the section */
+    justify-content: center; /* Centers the .lego-skill-container horizontally */
+    padding: 20px; /* Add some padding around the section */
+    box-sizing: border-box; /* Includes padding in the element's total width and height */
+}
 .lego-card {
   position: relative;
   background: linear-gradient(145deg, #ff6f00, #ff9f00);
