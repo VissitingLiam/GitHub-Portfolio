@@ -101,15 +101,30 @@ body {
 }
 
 
+/* Skill cards */
 
 .lego-card-grid {
     width: 100%; /* Take full width */
-    /* This section is automatically placed below the header due to flex-direction: column on the body */
-    display: flex; /* Helps in centering the container inside the section */
-    justify-content: center; /* Centers the .lego-skill-container horizontally */
-    padding: 20px; /* Add some padding around the section */
-    box-sizing: border-box; /* Includes padding in the element's total width and height */
+    display: flex; 
+    justify-content: center; 
+    padding: 3rem; /* Add some padding around the section */
+    box-sizing: scroll;
+    background-color: transparent;
 }
+.lego-grid-card::-webkit-scrollbar{
+width: 10px;
+height: 10px;
+
+}
+.lego-grid-card::-webkit-scrollbar-thumb{
+   background: #201c29;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+.lego-grid-card::-webkit-scrollbar-track {
+    background: linear-gradient(90deg,#201c29,#201c29 1px,#17141d 0,#17141d);
+}
+
 .lego-card {
   position: relative;
   background: linear-gradient(145deg, #ff6f00, #ff9f00);
@@ -117,7 +132,7 @@ body {
   height: 350px;
   border-radius: 15px;
   box-shadow:
-    0 5px 15px rgba(0,0,0,0.4),
+    -1rem 0 3rem rgba(0,0,0,0.4),
     inset 0 -5px 15px rgba(255, 255, 255, 0.25);
   overflow: hidden;
   cursor: pointer;
@@ -125,11 +140,16 @@ body {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* Skill Card Animation & shadows */
 .lego-card:hover {
-  transform: translateY(-20px) rotateX(5deg) rotateY(10deg);
-  box-shadow:
-    0 15px 30px rgba(0,0,0,0.6),
-    inset 0 -8px 25px rgba(255, 255, 255, 0.35);
+  transform: translateY(-1rem);;
+}
+.lego-card:hover~.lego-card {
+  transform: translateX(130px);
+}
+
+.lego-card:not(:first-child){
+  margin-left: -130px;
 }
 
 /* Lego studs pattern */
